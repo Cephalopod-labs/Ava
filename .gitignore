@@ -20,11 +20,16 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# jetbrains setting folder
+# IDE / editor
+.vscode/
 .idea/
 
-# context/architecture files
+# Claude Code context & skills
+.claude/
+CLAUDE.md
 AGENTS.MD
 SKILLS.MD
 colors.txt
-.claude/
+
+# source/raw images (not needed for site build)
+src/assets/swimsuits/

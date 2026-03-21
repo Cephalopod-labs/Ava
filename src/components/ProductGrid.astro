@@ -1,6 +1,8 @@
 ---
 import whatsappConfig from '../config/whatsapp.json';
 import products from '../config/products.json';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <section class="products-section" id="productos">
@@ -35,12 +37,13 @@ import products from '../config/products.json';
 				data-color={product.color}
 				data-price={product.price}
 				data-name={product.name}
-				data-gallery={JSON.stringify(product.gallery)}
+				data-gallery={JSON.stringify(product.gallery.map((img: string) => `${base}${img.replace(/^\//, '')}`))}
+
 				style={`animation-delay: ${i * 0.08}s`}
 			>
 				<div class="card-image-wrapper">
 					<img
-						src={product.image}
+						src={`${base}${product.image.replace(/^\//, '')}`}
 						alt={product.name}
 						loading="lazy"
 						class="card-image"
