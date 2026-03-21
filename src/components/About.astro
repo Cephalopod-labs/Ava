@@ -1,4 +1,6 @@
 ---
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
 ---
 
 <section class="about" id="nosotros">
@@ -45,7 +47,7 @@
 		</div>
 		<div class="about-visual reveal">
 			<div class="visual-card">
-				<img src={`${import.meta.env.BASE_URL}swimsuits/onepiece-teal.png`} alt="Enterizo Teal con Volantes — Ava Swimwear, trajes de baño en Panamá" loading="lazy" />
+				<img src={`${base}swimsuits/onepiece-teal.png`} alt="Enterizo Teal con Volantes — Ava Swimwear, trajes de baño en Panamá" loading="lazy" />
 			</div>
 		</div>
 	</div>
