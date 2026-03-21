@@ -1,0 +1,122 @@
+[
+	{
+		"id": 1,
+		"name": "Bikini Menta Clásico",
+		"price": 30,
+		"category": "bikini",
+		"color": "verde",
+		"image": "/swimsuits/bikini-mint.jpg",
+		"gallery": ["/swimsuits/bikini-mint.jpg", "/swimsuits/bikini-mint-2.jpg", "/swimsuits/bikini-mint-3.jpg"],
+		"tag": "Popular"
+	},
+	{
+		"id": 2,
+		"name": "Bikini Azul Marino",
+		"price": 30,
+		"category": "bikini",
+		"color": "azul",
+		"image": "/swimsuits/bikini-navy.jpg",
+		"gallery": ["/swimsuits/bikini-navy.jpg", "/swimsuits/bikini-navy-2.jpg", "/swimsuits/bikini-navy-3.jpg", "/swimsuits/bikini-navy-4.jpg"],
+		"tag": ""
+	},
+	{
+		"id": 3,
+		"name": "Bikini Rojo Pasión",
+		"price": 30,
+		"category": "bikini",
+		"color": "rojo",
+		"image": "/swimsuits/bikini-red.jpg",
+		"gallery": ["/swimsuits/bikini-red.jpg", "/swimsuits/bikini-red-2.jpg", "/swimsuits/bikini-red-3.jpg", "/swimsuits/bikini-red-4.jpg"],
+		"tag": "Nuevo"
+	},
+	{
+		"id": 4,
+		"name": "Bikini Arena & Esmeralda",
+		"price": 30,
+		"category": "bikini",
+		"color": "beige",
+		"image": "/swimsuits/bikini-beige-green.jpg",
+		"gallery": ["/swimsuits/bikini-beige-green.jpg", "/swimsuits/bikini-beige-green-2.jpg", "/swimsuits/bikini-beige-green-3.jpg", "/swimsuits/bikini-beige-green-4.jpg"],
+		"tag": ""
+	},
+	{
+		"id": 5,
+		"name": "Enterizo Teal con Volantes",
+		"price": 30,
+		"category": "enterizo",
+		"color": "verde",
+		"image": "/swimsuits/onepiece-teal.png",
+		"gallery": ["/swimsuits/onepiece-teal.png", "/swimsuits/onepiece-black.png", "/swimsuits/onepiece-teal-2.png", "/swimsuits/onepiece-teal-3.png"],
+		"tag": "Bestseller"
+	},
+	{
+		"id": 6,
+		"name": "Bikini Arena & Menta",
+		"price": 30,
+		"category": "bikini",
+		"color": "beige",
+		"image": "/swimsuits/bikini-beige-mint.jpg",
+		"gallery": ["/swimsuits/bikini-beige-mint.jpg", "/swimsuits/bikini-beige-mint-2.jpg", "/swimsuits/bikini-beige-mint-3.jpg"],
+		"tag": ""
+	},
+	{
+		"id": 7,
+		"name": "Bikini Negro Elegante",
+		"price": 30,
+		"category": "bikini",
+		"color": "negro",
+		"image": "/swimsuits/bikini-black.jpg",
+		"gallery": ["/swimsuits/bikini-black.jpg", "/swimsuits/bikini-black-2.jpg", "/swimsuits/bikini-black-3.jpg", "/swimsuits/bikini-black-4.jpg"],
+		"tag": ""
+	},
+	{
+		"id": 8,
+		"name": "Bikini Tricolor Neón",
+		"price": 30,
+		"category": "bikini",
+		"color": "multicolor",
+		"image": "/swimsuits/bikini-orange.jpg",
+		"gallery": ["/swimsuits/bikini-orange.jpg", "/swimsuits/bikini-neon-2.jpg", "/swimsuits/bikini-neon-3.jpg", "/swimsuits/bikini-neon-4.jpg"],
+		"tag": "Edición Limitada"
+	},
+	{
+		"id": 9,
+		"name": "Bikini Arena High-Waist",
+		"price": 30,
+		"category": "bikini",
+		"color": "beige",
+		"image": "/swimsuits/bikini-floral.jpg",
+		"gallery": ["/swimsuits/bikini-floral.jpg", "/swimsuits/bikini-highwaist-2.jpg", "/swimsuits/bikini-highwaist-3.jpg", "/swimsuits/bikini-highwaist-4.jpg"],
+		"tag": ""
+	},
+	{
+		"id": 10,
+		"name": "Bikini Verde Bosque",
+		"price": 30,
+		"category": "bikini",
+		"color": "verde",
+		"image": "/swimsuits/bikini-verde-oscuro.jpg",
+		"gallery": ["/swimsuits/bikini-verde-oscuro.jpg", "/swimsuits/bikini-verde-oscuro-2.jpg", "/swimsuits/bikini-verde-oscuro-3.jpg", "/swimsuits/bikini-verde-oscuro-4.jpg"],
+		"tag": "Nuevo"
+	},
+	{
+		"id": 11,
+		"name": "Bikini Arena & Rosa",
+		"price": 30,
+		"category": "bikini",
+		"color": "rosa",
+		"image": "/swimsuits/bikini-arena-rosa.jpg",
+		"gallery": ["/swimsuits/bikini-arena-rosa.jpg", "/swimsuits/bikini-arena-rosa-2.jpg", "/swimsuits/bikini-arena-rosa-3.jpg"],
+		"tag": ""
+	},
+	{
+		"id": 12,
+		"name": "Bikini Púrpura & Neón",
+		"price": 30,
+		"category": "bikini",
+		"color": "multicolor",
+		"image": "/swimsuits/bikini-purpura.jpg",
+		"gallery": ["/swimsuits/bikini-purpura.jpg", "/swimsuits/bikini-purpura-2.jpg", "/swimsuits/bikini-purpura-3.jpg", "/swimsuits/bikini-purpura-4.jpg"],
+		"tag": "Edición Limitada"
+	}
+]

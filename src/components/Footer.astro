@@ -1,0 +1,149 @@
+---
+import whatsappConfig from '../config/whatsapp.json';
+---
+
+<footer class="footer" id="contacto">
+	<div class="footer-inner">
+		<div class="footer-brand">
+			<div class="footer-logo">
+				<span class="logo-text">Ava</span>
+				<span class="logo-tagline">swimwear</span>
+			</div>
+			<p class="footer-desc">
+				Trajes de baño diseñados para resaltar tu belleza natural. Cada pieza, una declaración de estilo.
+			</p>
+		</div>
+
+		<div class="footer-links">
+			<h4>Colección</h4>
+			<a href="#productos">Bikinis</a>
+			<a href="#productos">Enterizos</a>
+			<a href="#productos">Nuevos</a>
+		</div>
+
+		<div class="footer-links">
+			<h4>Ayuda</h4>
+			<a href="#">Guía de tallas</a>
+			<a href="#">Envíos</a>
+			<a href="#">Devoluciones</a>
+		</div>
+
+		<div class="footer-links">
+			<h4>Contáctanos</h4>
+			<a href="#">Instagram</a>
+			<a href={`https://wa.me/${whatsappConfig.number}`} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+			<a href="#">Email</a>
+		</div>
+	</div>
+
+	<div class="footer-bottom">
+		<p>&copy; 2026 Ava Swimwear. Todos los derechos reservados.</p>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		background: var(--text-dark);
+		color: var(--alabaster-grey);
+		padding: 4rem 2rem 0;
+	}
+
+	.footer-inner {
+		max-width: 1100px;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 2fr 1fr 1fr 1fr;
+		gap: 3rem;
+		padding-bottom: 3rem;
+		border-bottom: 1px solid rgba(187, 183, 187, 0.15);
+	}
+
+	.footer-logo {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		margin-bottom: 1rem;
+	}
+
+	.footer-logo .logo-text {
+		font-family: var(--font-serif);
+		font-size: 1.8rem;
+		font-weight: 300;
+		letter-spacing: 0.3em;
+		text-transform: uppercase;
+		color: var(--seashell);
+	}
+
+	.footer-logo .logo-tagline {
+		font-size: 0.6rem;
+		letter-spacing: 0.35em;
+		text-transform: uppercase;
+		color: var(--pale-slate);
+		font-weight: 300;
+	}
+
+	.footer-desc {
+		font-size: 0.9rem;
+		font-weight: 300;
+		line-height: 1.7;
+		color: var(--pale-slate);
+		max-width: 280px;
+	}
+
+	.footer-links {
+		display: flex;
+		flex-direction: column;
+		gap: 0.8rem;
+	}
+
+	.footer-links h4 {
+		font-size: 0.78rem;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: var(--seashell);
+		margin-bottom: 0.3rem;
+	}
+
+	.footer-links a {
+		font-size: 0.88rem;
+		font-weight: 300;
+		color: var(--pale-slate);
+		transition: color 0.3s ease;
+	}
+
+	.footer-links a:hover {
+		color: var(--seashell);
+	}
+
+	.footer-bottom {
+		max-width: 1100px;
+		margin: 0 auto;
+		padding: 1.5rem 0;
+		text-align: center;
+	}
+
+	.footer-bottom p {
+		font-size: 0.78rem;
+		font-weight: 300;
+		color: var(--pale-slate);
+		letter-spacing: 0.05em;
+	}
+
+	@media (max-width: 768px) {
+		.footer-inner {
+			grid-template-columns: 1fr 1fr;
+			gap: 2rem;
+		}
+
+		.footer-brand {
+			grid-column: 1 / -1;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.footer-inner {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

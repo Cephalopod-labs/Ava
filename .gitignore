@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# context/architecture files
+AGENTS.MD
+SKILLS.MD
+colors.txt
+.claude/

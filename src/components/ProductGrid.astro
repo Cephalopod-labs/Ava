@@ -1,0 +1,802 @@
+---
+import whatsappConfig from '../config/whatsapp.json';
+import products from '../config/products.json';
+---
+
+<section class="products-section" id="productos">
+	<div class="section-header reveal">
+		<p class="section-pre">Nuestra Colección</p>
+		<h2 class="section-title">Encuentra tu estilo perfecto</h2>
+	</div>
+
+	<div class="controls reveal">
+		<div class="filters">
+			<button class="filter-btn active" data-filter="todos">Todos</button>
+			<button class="filter-btn" data-filter="bikini">Bikinis</button>
+			<button class="filter-btn" data-filter="enterizo">Enterizos</button>
+		</div>
+
+		<div class="sort-wrapper">
+			<select class="sort-select" id="sortSelect">
+				<option value="default">Ordenar por</option>
+				<option value="price-asc">Precio: menor a mayor</option>
+				<option value="price-desc">Precio: mayor a menor</option>
+				<option value="name-asc">Nombre: A - Z</option>
+				<option value="name-desc">Nombre: Z - A</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="product-grid" id="productGrid">
+		{products.map((product, i) => (
+			<article
+				class="product-card reveal"
+				data-category={product.category}
+				data-color={product.color}
+				data-price={product.price}
+				data-name={product.name}
+				data-gallery={JSON.stringify(product.gallery)}
+				style={`animation-delay: ${i * 0.08}s`}
+			>
+				<div class="card-image-wrapper">
+					<img
+						src={product.image}
+						alt={product.name}
+						loading="lazy"
+						class="card-image"
+					/>
+					<div class="card-overlay">
+						<button class="quick-view-btn" data-product-id={product.id}>Vista rápida</button>
+					</div>
+					{product.tag && <span class="card-tag">{product.tag}</span>}
+				</div>
+				<div class="card-info">
+					<h3 class="card-name">{product.name}</h3>
+					<p class="card-price">
+						${product.price}.00 USD
+					</p>
+				</div>
+			</article>
+		))}
+	</div>
+
+	<p class="no-results" id="noResults">No se encontraron productos con ese filtro.</p>
+</section>
+
+<!-- Modal -->
+<div class="modal-backdrop" id="modalBackdrop">
+	<div class="modal" id="productModal">
+		<button class="modal-close" id="modalClose" aria-label="Cerrar">
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+				<path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+			</svg>
+		</button>
+
+		<div class="modal-gallery">
+			<div class="modal-main-image">
+				<img id="modalMainImg" src="" alt="" />
+				<button class="gallery-nav gallery-prev" id="galleryPrev" aria-label="Anterior">
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+						<path d="M12 4l-6 6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</button>
+				<button class="gallery-nav gallery-next" id="galleryNext" aria-label="Siguiente">
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+						<path d="M8 4l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</button>
+			</div>
+			<div class="modal-thumbnails" id="modalThumbnails"></div>
+		</div>
+
+		<div class="modal-info">
+			<h2 class="modal-product-name" id="modalName"></h2>
+			<p class="modal-product-price" id="modalPrice"></p>
+			<p class="modal-product-desc">
+				Traje de baño elaborado con telas de alta calidad, suaves al tacto y resistentes al sol y al agua.
+				Diseñado para resaltar tu belleza natural con un ajuste perfecto.
+			</p>
+			<div class="modal-details">
+				<div class="modal-detail">
+					<span class="detail-label">Material</span>
+					<span class="detail-value">Lycra premium</span>
+				</div>
+				<div class="modal-detail">
+					<span class="detail-label">Cuidado</span>
+					<span class="detail-value">Lavar a mano, secar a la sombra</span>
+				</div>
+				<div class="modal-detail">
+					<span class="detail-label">Envío</span>
+					<span class="detail-value">Gratis a nivel nacional</span>
+				</div>
+			</div>
+			<a href="#" class="modal-cta" id="modalCta" target="_blank" rel="noopener noreferrer"
+				data-wa-number={whatsappConfig.number}
+				data-wa-message={whatsappConfig.message}>
+				<svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+					<path d="M8 0C3.58 0 0 3.58 0 8c0 1.41.37 2.74 1.02 3.89L0 16l4.2-1.01A7.96 7.96 0 008 16c4.42 0 8-3.58 8-8s-3.58-8-8-8zm4.07 11.27c-.18.5-.89.92-1.44 1.04-.39.08-.89.15-2.59-.56-2.17-.9-3.56-3.1-3.67-3.24-.1-.15-.87-1.16-.87-2.21s.55-1.57.75-1.78c.2-.22.43-.27.58-.27h.42c.13 0 .31-.05.49.37.18.43.62 1.51.67 1.62.05.11.09.24.02.38-.07.15-.1.24-.2.36-.1.13-.22.28-.31.38-.1.1-.21.22-.09.43.12.21.53.88 1.14 1.42.78.7 1.44.91 1.65 1.01.2.1.32.09.44-.05.12-.15.5-.58.63-.78.14-.2.27-.17.46-.1.18.07 1.17.55 1.37.65.2.1.33.15.38.23.05.09.05.5-.13 1z" fill="currentColor"/>
+				</svg>
+				Consultar disponibilidad
+				<svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+					<path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+			</a>
+		</div>
+	</div>
+</div>
+
+<script>
+	// Filter logic
+	const filterBtns = document.querySelectorAll('.filter-btn');
+	const cards = document.querySelectorAll('.product-card');
+	const grid = document.getElementById('productGrid');
+	const noResults = document.getElementById('noResults');
+	const sortSelect = document.getElementById('sortSelect') as HTMLSelectElement;
+
+	let currentFilter = 'todos';
+
+	function applyFilter(filter: string) {
+		currentFilter = filter;
+		let visibleCount = 0;
+
+		cards.forEach(card => {
+			const el = card as HTMLElement;
+			const category = el.dataset.category;
+			const match = filter === 'todos' || category === filter;
+
+			if (match) {
+				el.style.display = '';
+				el.style.animation = 'scaleIn 0.4s ease-out forwards';
+				visibleCount++;
+			} else {
+				el.style.display = 'none';
+				el.style.animation = '';
+			}
+		});
+
+		if (noResults) {
+			(noResults as HTMLElement).style.display = visibleCount === 0 ? 'block' : 'none';
+		}
+	}
+
+	filterBtns.forEach(btn => {
+		btn.addEventListener('click', () => {
+			filterBtns.forEach(b => b.classList.remove('active'));
+			btn.classList.add('active');
+			const filter = (btn as HTMLElement).dataset.filter || 'todos';
+			applyFilter(filter);
+		});
+	});
+
+	// Sort logic
+	sortSelect?.addEventListener('change', () => {
+		const value = sortSelect.value;
+		const cardsArray = Array.from(cards) as HTMLElement[];
+
+		cardsArray.sort((a, b) => {
+			switch (value) {
+				case 'price-asc':
+					return Number(a.dataset.price) - Number(b.dataset.price);
+				case 'price-desc':
+					return Number(b.dataset.price) - Number(a.dataset.price);
+				case 'name-asc':
+					return (a.dataset.name || '').localeCompare(b.dataset.name || '');
+				case 'name-desc':
+					return (b.dataset.name || '').localeCompare(a.dataset.name || '');
+				default:
+					return 0;
+			}
+		});
+
+		cardsArray.forEach(card => {
+			grid?.appendChild(card);
+			card.style.animation = 'scaleIn 0.4s ease-out forwards';
+		});
+	});
+
+	// Modal logic
+	const backdrop = document.getElementById('modalBackdrop') as HTMLElement;
+	const modal = document.getElementById('productModal') as HTMLElement;
+	const modalClose = document.getElementById('modalClose') as HTMLElement;
+	const modalMainImg = document.getElementById('modalMainImg') as HTMLImageElement;
+	const modalThumbnails = document.getElementById('modalThumbnails') as HTMLElement;
+	const modalName = document.getElementById('modalName') as HTMLElement;
+	const modalPrice = document.getElementById('modalPrice') as HTMLElement;
+	const modalCta = document.getElementById('modalCta') as HTMLAnchorElement;
+	const galleryPrev = document.getElementById('galleryPrev') as HTMLElement;
+	const galleryNext = document.getElementById('galleryNext') as HTMLElement;
+
+	const WHATSAPP_NUMBER = modalCta.dataset.waNumber || '';
+	const WHATSAPP_MESSAGE_TEMPLATE = modalCta.dataset.waMessage || '';
+
+	let currentGallery: string[] = [];
+	let currentIndex = 0;
+
+	function openModal(card: HTMLElement) {
+		const gallery = JSON.parse(card.dataset.gallery || '[]');
+		const name = card.dataset.name || '';
+		const price = card.dataset.price || '0';
+
+		currentGallery = gallery;
+		currentIndex = 0;
+
+		modalName.textContent = name;
+		modalPrice.textContent = `$${price}.00 USD`;
+
+		const message = WHATSAPP_MESSAGE_TEMPLATE
+			.replace('{product}', name)
+			.replace('{price}', `$${price}.00 USD`);
+		modalCta.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+		updateMainImage();
+		renderThumbnails();
+
+		backdrop.classList.add('open');
+		document.body.style.overflow = 'hidden';
+	}
+
+	function closeModal() {
+		backdrop.classList.remove('open');
+		document.body.style.overflow = '';
+	}
+
+	function updateMainImage() {
+		modalMainImg.style.opacity = '0';
+		setTimeout(() => {
+			modalMainImg.src = currentGallery[currentIndex];
+			modalMainImg.alt = modalName.textContent || '';
+			modalMainImg.style.opacity = '1';
+		}, 150);
+
+		document.querySelectorAll('.thumb').forEach((t, i) => {
+			t.classList.toggle('active', i === currentIndex);
+		});
+	}
+
+	function renderThumbnails() {
+		modalThumbnails.innerHTML = '';
+		currentGallery.forEach((src, i) => {
+			const thumb = document.createElement('button');
+			thumb.className = `thumb ${i === 0 ? 'active' : ''}`;
+			thumb.setAttribute('aria-label', `Ver foto ${i + 1}`);
+			const img = document.createElement('img');
+			img.src = src;
+			img.alt = `Foto ${i + 1}`;
+			img.loading = 'lazy';
+			thumb.appendChild(img);
+			thumb.addEventListener('click', () => {
+				currentIndex = i;
+				updateMainImage();
+			});
+			modalThumbnails.appendChild(thumb);
+		});
+	}
+
+	// Event listeners
+	document.querySelectorAll('.quick-view-btn').forEach(btn => {
+		btn.addEventListener('click', (e) => {
+			e.stopPropagation();
+			const card = (btn as HTMLElement).closest('.product-card') as HTMLElement;
+			if (card) openModal(card);
+		});
+	});
+
+	modalClose?.addEventListener('click', closeModal);
+
+	backdrop?.addEventListener('click', (e) => {
+		if (e.target === backdrop) closeModal();
+	});
+
+	galleryPrev?.addEventListener('click', () => {
+		currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+		updateMainImage();
+	});
+
+	galleryNext?.addEventListener('click', () => {
+		currentIndex = (currentIndex + 1) % currentGallery.length;
+		updateMainImage();
+	});
+
+	document.addEventListener('keydown', (e) => {
+		if (!backdrop.classList.contains('open')) return;
+		if (e.key === 'Escape') closeModal();
+		if (e.key === 'ArrowLeft') {
+			currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+			updateMainImage();
+		}
+		if (e.key === 'ArrowRight') {
+			currentIndex = (currentIndex + 1) % currentGallery.length;
+			updateMainImage();
+		}
+	});
+</script>
+
+<style>
+	.products-section {
+		padding: 6rem 2rem;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.section-header {
+		text-align: center;
+		margin-bottom: 3rem;
+	}
+
+	.section-pre {
+		font-size: 0.75rem;
+		font-weight: 500;
+		letter-spacing: 0.3em;
+		text-transform: uppercase;
+		color: var(--rosy-granite);
+		margin-bottom: 0.75rem;
+	}
+
+	.section-title {
+		font-family: var(--font-serif);
+		font-size: clamp(2rem, 4vw, 3rem);
+		font-weight: 300;
+		color: var(--text-dark);
+	}
+
+	.controls {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 2.5rem;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	.filters {
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	.filter-btn {
+		padding: 0.6rem 1.5rem;
+		font-size: 0.8rem;
+		font-weight: 400;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--text-medium);
+		border: 1px solid var(--alabaster-grey);
+		border-radius: 50px;
+		transition: all 0.3s ease;
+		background: transparent;
+	}
+
+	.filter-btn:hover,
+	.filter-btn.active {
+		background: var(--text-dark);
+		color: var(--seashell);
+		border-color: var(--text-dark);
+	}
+
+	.sort-wrapper {
+		position: relative;
+	}
+
+	.sort-select {
+		appearance: none;
+		padding: 0.6rem 2.5rem 0.6rem 1.2rem;
+		font-size: 0.8rem;
+		font-family: var(--font-sans);
+		letter-spacing: 0.05em;
+		color: var(--text-medium);
+		background: var(--white);
+		border: 1px solid var(--alabaster-grey);
+		border-radius: 50px;
+		cursor: pointer;
+		transition: border-color 0.3s ease;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' stroke='%23928991' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: right 1rem center;
+	}
+
+	.sort-select:focus {
+		outline: none;
+		border-color: var(--rosy-granite);
+	}
+
+	.product-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+		gap: 2rem;
+	}
+
+	.product-card {
+		background: var(--white);
+		border-radius: 16px;
+		overflow: hidden;
+		transition: transform 0.4s ease, box-shadow 0.4s ease;
+	}
+
+	.product-card:hover {
+		transform: translateY(-6px);
+		box-shadow: 0 20px 50px rgba(146, 137, 145, 0.15);
+	}
+
+	.card-image-wrapper {
+		position: relative;
+		overflow: hidden;
+		aspect-ratio: 3/4;
+		background: var(--alabaster-grey-2);
+	}
+
+	.card-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.6s ease;
+	}
+
+	.product-card:hover .card-image {
+		transform: scale(1.05);
+	}
+
+	.card-overlay {
+		position: absolute;
+		inset: 0;
+		background: rgba(58, 50, 56, 0.3);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		transition: opacity 0.4s ease;
+	}
+
+	.product-card:hover .card-overlay {
+		opacity: 1;
+	}
+
+	.quick-view-btn {
+		padding: 0.8rem 2rem;
+		background: var(--white);
+		color: var(--text-dark);
+		font-size: 0.78rem;
+		font-weight: 500;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		border-radius: 50px;
+		transform: translateY(10px);
+		transition: all 0.3s ease;
+	}
+
+	.product-card:hover .quick-view-btn {
+		transform: translateY(0);
+	}
+
+	.quick-view-btn:hover {
+		background: var(--text-dark);
+		color: var(--white);
+	}
+
+	.card-tag {
+		position: absolute;
+		top: 1rem;
+		left: 1rem;
+		padding: 0.35rem 1rem;
+		background: var(--white);
+		color: var(--text-dark);
+		font-size: 0.7rem;
+		font-weight: 500;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		border-radius: 50px;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+	}
+
+	.card-info {
+		padding: 1.25rem 1.5rem;
+	}
+
+	.card-name {
+		font-family: var(--font-sans);
+		font-size: 0.95rem;
+		font-weight: 400;
+		color: var(--text-dark);
+		margin-bottom: 0.4rem;
+	}
+
+	.card-price {
+		font-size: 0.9rem;
+		font-weight: 500;
+		color: var(--rosy-granite);
+	}
+
+	.no-results {
+		display: none;
+		text-align: center;
+		padding: 3rem;
+		color: var(--text-light);
+		font-size: 1rem;
+	}
+
+	/* Modal styles */
+	.modal-backdrop {
+		position: fixed;
+		inset: 0;
+		z-index: 200;
+		background: rgba(58, 50, 56, 0.6);
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.4s ease;
+		padding: 1.5rem;
+	}
+
+	.modal-backdrop.open {
+		opacity: 1;
+		pointer-events: all;
+	}
+
+	.modal {
+		background: var(--white);
+		border-radius: 20px;
+		max-width: 900px;
+		width: 100%;
+		max-height: 90vh;
+		overflow-y: auto;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		position: relative;
+		transform: scale(0.95) translateY(20px);
+		transition: transform 0.4s ease;
+		box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+	}
+
+	.modal-backdrop.open .modal {
+		transform: scale(1) translateY(0);
+	}
+
+	.modal-close {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		z-index: 10;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: var(--white);
+		border-radius: 50%;
+		color: var(--text-dark);
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+		transition: all 0.3s ease;
+	}
+
+	.modal-close:hover {
+		background: var(--text-dark);
+		color: var(--white);
+	}
+
+	.modal-gallery {
+		padding: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.modal-main-image {
+		position: relative;
+		aspect-ratio: 3/4;
+		border-radius: 14px;
+		overflow: hidden;
+		background: var(--alabaster-grey-2);
+	}
+
+	.modal-main-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: opacity 0.3s ease;
+	}
+
+	.gallery-nav {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 36px;
+		height: 36px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: rgba(255, 255, 255, 0.9);
+		border-radius: 50%;
+		color: var(--text-dark);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+		transition: all 0.3s ease;
+		opacity: 0;
+	}
+
+	.modal-main-image:hover .gallery-nav {
+		opacity: 1;
+	}
+
+	.gallery-nav:hover {
+		background: var(--text-dark);
+		color: var(--white);
+	}
+
+	.gallery-prev {
+		left: 0.75rem;
+	}
+
+	.gallery-next {
+		right: 0.75rem;
+	}
+
+	.modal-thumbnails {
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	.thumb {
+		width: 60px;
+		height: 72px;
+		border-radius: 8px;
+		overflow: hidden;
+		border: 2px solid transparent;
+		transition: all 0.3s ease;
+		padding: 0;
+		flex-shrink: 0;
+	}
+
+	.thumb img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.thumb.active {
+		border-color: var(--text-dark);
+	}
+
+	.thumb:hover {
+		border-color: var(--rosy-granite);
+	}
+
+	.modal-info {
+		padding: 2.5rem 2rem 2.5rem 0.5rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.modal-product-name {
+		font-family: var(--font-serif);
+		font-size: 1.8rem;
+		font-weight: 300;
+		color: var(--text-dark);
+		margin-bottom: 0.5rem;
+	}
+
+	.modal-product-price {
+		font-size: 1.1rem;
+		font-weight: 500;
+		color: var(--rosy-granite);
+		margin-bottom: 1.5rem;
+	}
+
+	.modal-product-desc {
+		font-size: 0.92rem;
+		font-weight: 300;
+		line-height: 1.7;
+		color: var(--text-medium);
+		margin-bottom: 2rem;
+	}
+
+	.modal-details {
+		display: flex;
+		flex-direction: column;
+		gap: 0.8rem;
+		margin-bottom: 2rem;
+		padding-top: 1.5rem;
+		border-top: 1px solid var(--alabaster-grey);
+	}
+
+	.modal-detail {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.detail-label {
+		font-size: 0.82rem;
+		font-weight: 400;
+		color: var(--text-light);
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+	}
+
+	.detail-value {
+		font-size: 0.88rem;
+		font-weight: 400;
+		color: var(--text-dark);
+	}
+
+	.modal-cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+		padding: 1rem 2rem;
+		background: var(--text-dark);
+		color: var(--seashell);
+		font-size: 0.8rem;
+		font-weight: 500;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		border-radius: 50px;
+		transition: all 0.4s ease;
+		text-decoration: none;
+	}
+
+	.modal-cta:hover {
+		background: var(--rosy-granite);
+		transform: translateY(-2px);
+		box-shadow: 0 10px 30px rgba(146, 137, 145, 0.3);
+	}
+
+	.modal-cta svg {
+		transition: transform 0.3s ease;
+	}
+
+	.modal-cta:hover svg {
+		transform: translateX(4px);
+	}
+
+	@media (max-width: 768px) {
+		.modal {
+			grid-template-columns: 1fr;
+			max-height: 95vh;
+		}
+
+		.modal-info {
+			padding: 1.5rem;
+		}
+
+		.modal-product-name {
+			font-size: 1.4rem;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.product-grid {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 1rem;
+		}
+
+		.card-info {
+			padding: 0.8rem 1rem;
+		}
+
+		.card-name {
+			font-size: 0.85rem;
+		}
+
+		.card-price {
+			font-size: 0.8rem;
+		}
+
+		.controls {
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		.filters {
+			overflow-x: auto;
+			padding-bottom: 0.5rem;
+		}
+
+		.filter-btn {
+			white-space: nowrap;
+			flex-shrink: 0;
+		}
+	}
+</style>
