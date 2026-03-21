@@ -1,0 +1,151 @@
+---
+interface Props {
+	title?: string;
+}
+
+const { title = 'Ava Swimwear' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="description" content="Ava Swimwear — Trajes de baño diseñados para resaltar tu belleza natural." />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--rosy-granite: #928991;
+		--pale-slate: #bbb7bb;
+		--alabaster-grey: #dcdbda;
+		--alabaster-grey-2: #eceae7;
+		--seashell: #f7edeb;
+		--text-dark: #3a3238;
+		--text-medium: #6b5f68;
+		--text-light: #928991;
+		--white: #ffffff;
+		--font-serif: 'Cormorant Garamond', Georgia, serif;
+		--font-sans: 'Outfit', system-ui, sans-serif;
+	}
+
+	*,
+	*::before,
+	*::after {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		font-family: var(--font-sans);
+		color: var(--text-dark);
+		background-color: var(--seashell);
+		overflow-x: hidden;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	img {
+		max-width: 100%;
+		display: block;
+	}
+
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+
+	button {
+		cursor: pointer;
+		border: none;
+		background: none;
+		font-family: inherit;
+	}
+
+	/* Animations */
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes fadeIn {
+		from { opacity: 0; }
+		to { opacity: 1; }
+	}
+
+	@keyframes slideDown {
+		from {
+			opacity: 0;
+			transform: translateY(-20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes scaleIn {
+		from {
+			opacity: 0;
+			transform: scale(0.95);
+		}
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+
+	.animate-fade-in-up {
+		animation: fadeInUp 0.8s ease-out forwards;
+		opacity: 0;
+	}
+
+	.animate-fade-in {
+		animation: fadeIn 0.6s ease-out forwards;
+		opacity: 0;
+	}
+
+	.animate-slide-down {
+		animation: slideDown 0.6s ease-out forwards;
+		opacity: 0;
+	}
+
+	/* Stagger delays */
+	.delay-1 { animation-delay: 0.1s; }
+	.delay-2 { animation-delay: 0.2s; }
+	.delay-3 { animation-delay: 0.3s; }
+	.delay-4 { animation-delay: 0.4s; }
+	.delay-5 { animation-delay: 0.5s; }
+	.delay-6 { animation-delay: 0.6s; }
+
+	/* Scroll reveal */
+	.reveal {
+		opacity: 0;
+		transform: translateY(30px);
+		transition: opacity 0.8s ease, transform 0.8s ease;
+	}
+
+	.reveal.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+</style>
